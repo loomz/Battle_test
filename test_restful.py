@@ -17,8 +17,8 @@ username = 'criss'
 # password变量存储密码参数
 password = 'criss'
 # 拼凑body的参数
-payload = 'username=' + username + '&password=' + password
-response_login = comm.post(uri_login, params=payload)
+payload = {'username': 'criss', 'password': 'criss'}
+response_login = comm.post_json(uri_login, params=payload, headers={"Content-Type": "application/json; charset=UTF-8"})
 print('Response内容：' + response_login.text)
 
 # uri_selectEq存储战场的选择武器

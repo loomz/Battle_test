@@ -32,12 +32,13 @@ class Common(object):
 
     # 封装你自己的post方法，uri是访问路由，params是post请求需要传递的参数，如果没有参数这里为空
 
-  def post_json(self, uri, params=''):
+  def post_json(self, uri, params):
     # 拼凑访问地址
     url = self.url_root + uri
-    if len(params) > 0:
-      # 如果有参数，那么通过post方式访问对应的url，并将参数赋值给requests.post默认参数data
-      # 返回request的Response结果，类型为requests的Response类型
+    if isinstance(params, dict) :
+      res = requests.post(url, json=params, headers={"Content-Type": "application/json; charset=UTF-8"})
+    elif (isinstance(params, str)) and (len(params) > 0) :
+      print("json str")
       res = requests.post(url, data=json.dumps(params), headers={"Content-Type": "application/json; charset=UTF-8"})
     else:
       # 如果无参数，访问方式如下

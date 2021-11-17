@@ -33,8 +33,7 @@ print('Response内容：' + response_selectEq.text)
 # uri_kill存储战场的选择武器
 uri_kill = '/kill'
 # 武器编号变量存储用户名参数
-enemyid = '20001'
 # 拼凑body的参数
-payload = {'enemyid': '20001', 'equipmentid': '10003'}
+payload = {"enemyid": "20001", "equipmentid": "10003"}
 response_kill = comm.post_json(uri_kill, params=payload)
 print('Response内容：' + response_kill.text)

@@ -32,7 +32,7 @@ class Common(object):
 
     # 封装你自己的post方法，uri是访问路由，params是post请求需要传递的参数，如果没有参数这里为空
 
-  def post_json(self, uri, params='', headers=''):
+  def post_json(self, uri, params=''):
     # 拼凑访问地址
     url = self.url_root + uri
     if len(params) > 0:

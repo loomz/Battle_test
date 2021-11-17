@@ -36,5 +36,5 @@ uri_kill = '/kill'
 enemyid = '20001'
 # 拼凑body的参数
 payload = {'enemyid': '20001', 'equipmentid': '10003'}
-response_kill = comm.post_json(uri_kill, params=payload, headers={"Content-Type": "application/json; charset=UTF-8"})
+response_kill = comm.post_json(uri_kill, params=payload)
 print('Response内容：' + response_kill.text)

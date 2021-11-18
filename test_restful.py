@@ -26,8 +26,8 @@ uri_selectEq = '/selectEq/'
 # 武器编号变量存储用户名参数
 equipmentid = '10003'
 # 拼凑body的参数
-payload = equipmentid
-response_selectEq = comm.get(uri_selectEq, params=payload)
+uri_selectEq = uri_selectEq + equipmentid
+response_selectEq = comm.get(uri_selectEq)
 print('Response内容：' + response_selectEq.text)
 
 # uri_kill存储战场的选择武器

@@ -1,18 +1,18 @@
+import pytest
 import json
-import unittest
 from common import Common
 
-class TestBattle(unittest.TestCase) :
-    # 定义 comm
+class TestPytest :
     comm = None
 
-    def setUp(self) -> None:
-        print('setUp')
+    def setup(self):
+        print('setup')
         # 实例化自己的Common
         comm = Common('http://127.0.0.1:8088')
         self.comm = comm;
 
-    def test_index(self) :
+    @pytest.mark.website
+    def test_index(self):
         # 建立uri_index的变量，存储战场的首页路由
         uri_index = '/index'
 
@@ -25,7 +25,7 @@ class TestBattle(unittest.TestCase) :
         responseJson = json.loads(response_index.text);
         assert responseJson['code'] == 0;
 
-    def test_login(self) :
+    def test_login(self):
         # uri_login存储战场的登录
         uri_login = '/login'
         # username变量存储用户名参数
@@ -67,7 +67,3 @@ class TestBattle(unittest.TestCase) :
         # 通过返回值的code判断是否成功，0为成功，非0则抛出异常
         responseJson = json.loads(response_kill.text);
         assert responseJson['code'] == 0;
-
-    def tearDown(self) -> None:
-        print('tearDown')
-        comm = None;

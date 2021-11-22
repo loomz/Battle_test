@@ -2,7 +2,8 @@ import pytest
 import json
 from common import Common
 
-class TestPytest :
+
+class TestPytest:
     comm = None
 
     def setup(self):
@@ -41,14 +42,14 @@ class TestPytest :
         responseJson = json.loads(response_login.text);
         assert responseJson['code'] == 0;
 
-    def test_selectEq(self) :
+    def test_selectEq(self):
         # uri_selectEq存储战场的选择武器
         uri_selectEq = '/selectEq/%s'
         # 武器编号变量存储用户名参数
-        equipmentid = '10003'
+        equipmentId = '10003'
         # 拼凑body的参数
-        # uri_selectEq = uri_selectEq + equipmentid
-        uri_selectEq = uri_selectEq % equipmentid
+        # uri_selectEq = uri_selectEq + equipmentId
+        uri_selectEq = uri_selectEq % equipmentId
         response_selectEq = self.comm.get(uri_selectEq)
         print('Response内容：' + response_selectEq.text)
 
@@ -56,7 +57,7 @@ class TestPytest :
         responseJson = json.loads(response_selectEq.text);
         assert responseJson['code'] == 0;
 
-    def test_kill(self) :
+    def test_kill(self):
         # uri_kill存储战场的选择武器
         uri_kill = '/kill'
         # 武器编号变量存储用户名参数

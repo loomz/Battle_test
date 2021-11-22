@@ -1,12 +1,14 @@
 import requests
 import json
 
+
 # 定义一个common的类，它的父类是object
 class Common(object):
   # common的构造函数
   def __init__(self, url_root):
     # 被测系统的根路由
     self.url_root = url_root
+
   # 封装你自己的get请求，uri是访问路由，params是get请求的参数，如果没有默认为空
   def get(self, uri, params=''):
     # 拼凑访问地址

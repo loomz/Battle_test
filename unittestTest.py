@@ -2,6 +2,7 @@ import json
 import unittest
 from common import Common
 
+
 class TestBattle(unittest.TestCase) :
     # 定义 comm
     comm = None
@@ -45,10 +46,10 @@ class TestBattle(unittest.TestCase) :
         # uri_selectEq存储战场的选择武器
         uri_selectEq = '/selectEq/%s'
         # 武器编号变量存储用户名参数
-        equipmentid = '10003'
+        equipmentId = '10003'
         # 拼凑body的参数
         #uri_selectEq = uri_selectEq + equipmentid
-        uri_selectEq = uri_selectEq % equipmentid
+        uri_selectEq = uri_selectEq % equipmentId
         response_selectEq = self.comm.get(uri_selectEq)
         print('Response内容：' + response_selectEq.text)
 

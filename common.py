@@ -35,9 +35,9 @@ class Common(object):
   def post_json(self, uri, params):
     # 拼凑访问地址
     url = self.url_root + uri
-    if isinstance(params, dict) :
+    if isinstance(params, dict):
       res = requests.post(url, json=params, headers={"Content-Type": "application/json; charset=UTF-8"})
-    elif (isinstance(params, str)) and (len(params) > 0) :
+    elif (isinstance(params, str)) and (len(params) > 0):
       print("json str")
       res = requests.post(url, data=json.dumps(params), headers={"Content-Type": "application/json; charset=UTF-8"})
     else:

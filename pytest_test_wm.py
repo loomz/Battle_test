@@ -1,6 +1,7 @@
 import json
 import pytest
 from common import Common
+import os
 
 
 class TestPytest:
@@ -54,6 +55,12 @@ class TestPytest:
         response_Json = json.loads(response_kill.text);
         assert response_Json['code'] == 0;
 
-#if __name__ == '__main__':
+if __name__ == '__main__':
+    # 生成html报告
     # pytest.main(['-s', 'test_test_wm.py', '--html=pytest3.html'])
     # pytest.main(['-s','pytest_test_wm.py','-v', '--html=pytest6.html'])
+
+    # 测试当前文件中用例且生成报告./report,每次运行之前先清理报告所有的目录
+    pytest.main(['-sv', __file__, '--alluredir', './report', '--clean-alluredir'])
+    # 查看执行，运行allure serve 报告所在目录
+    os.system('allure serve ./report')

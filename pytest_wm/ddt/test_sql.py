@@ -1,12 +1,15 @@
 import MySQLdb
-import  pytest
-conn=MySQLdb.connect(
-    usr = 'root',
-    passwd ='123456',
-    host ='localhost',
-    port = 3306,
-    db = 'test_db'
+import pytest
+
+conn = MySQLdb.connect(
+    usr='root',
+    passwd='123456',
+    host='localhost',
+    port=3306,
+    db='test_db'
 )
+
+
 def get_data():
     query_sql = 'select id ,usrname,pwd from user_btl'
     lst = []
@@ -17,18 +20,20 @@ def get_data():
         cursor.execute(query_sql)
         # 获取所有数据
         r = cursor.fetchall()
-        for x in r :
+        for x in r:
             # x[0]第一列，X[1]第二列，X[2]第三列
-            u = (x[0],x[1],x[2])
+            u = (x[0], x[1], x[2])
             lst.append(u)
-        return  lst
+        return lst
     finally:
-        cursor.close() # 关闭游标
-        conn.close() #关闭数据库
+        cursor.close()  # 关闭游标
+        conn.close()  # 关闭数据库
 
-@pytest.mark.parametrize('id,name,pwd',get_data())
-    def test1(id,name,pwd):
+
+@pytest.mark.parametrize('id,name,pwd', get_data())
+def test1(id, name, pwd):
     print(id, name, pwd)
+
 
 if __name__ == '__main__':
     pytest.main(['-sv'])

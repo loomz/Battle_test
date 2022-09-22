@@ -1,2 +1,5 @@
 .idea
 *idea
+allure-report
+pycache
+pytest_cache

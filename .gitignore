@@ -1,5 +1,5 @@
 .idea
 *idea
 allure-report
-pycache
+__pycache__
 pytest_cache

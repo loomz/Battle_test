@@ -3,7 +3,7 @@ import json
 
 
 # 定义一个common的类，它的父类是object
-class Common(object):
+class CommonHttp(object):
   # common的构造函数
   def __init__(self, url_root):
     # 被测系统的根路由

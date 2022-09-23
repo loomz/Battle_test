@@ -1,6 +1,6 @@
 import pytest
 import json
-from common_requests import Common
+from common_requests import CommonHttp
 
 
 class TestPytest:
@@ -9,7 +9,7 @@ class TestPytest:
     def setup(self):
         print('setup')
         # 实例化自己的Common
-        comm = Common('http://127.0.0.1:8088')
+        comm = CommonHttp('http://127.0.0.1:8088')
         self.comm = comm;
 
     @pytest.mark.website

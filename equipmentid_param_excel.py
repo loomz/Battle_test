@@ -1,12 +1,12 @@
 
 #引入Common、ParamFactory类
-from common_requests import Common
+from common_requests import CommonHttp
 from ParamFactory import Param
 import os
 # uri_login存储战场的选择武器
 uri_selectEq = '/selectEq'
-# comm = Common('http://127.0.0.1:8088',api_type='http')
-comm = Common('http://127.0.0.1:8088')
+# comm = CommonHttp('http://127.0.0.1:8088',api_type='http')
+comm = CommonHttp('http://127.0.0.1:8088')
 # 武器编号变量存储武器编号，并且验证返回时是否有参数设计预期结果
 # 获取当前路径绝对值
 curPath = os.path.abspath('.')

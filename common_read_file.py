@@ -2,9 +2,10 @@ import xlrd
 import json
 import csv
 
+
 class CommonReadFile(object):
-    def get_data_excel(filename, sheet=0):
-        wb = xlrd.open_workbook((filename))
+    def get_data_excel(filename, sheet):
+        wb = xlrd.open_workbook(filename)
         # wb.sheet_by_index(0) 通过索引获得工作薄
         sheet = wb.sheet_by_index(sheet)
         rows = sheet.nrows  # 获取总行数
@@ -17,21 +18,19 @@ class CommonReadFile(object):
         return lit
 
     def get_data_cvs(file_csv):
-        #with opn 打开某文件 定义别名 f
+        # with opn 打开某文件 定义别名 f
         with open(file_csv) as f:
-            #读取里面值
-            lst =csv.reader(f)
+            # 读取里面值
+            lst = csv.reader(f)
             my_data = []
             for row in lst:
                 my_data.extend(row)
             return my_data
 
-    def get_data_json(file_json,keys):
+    def get_data_json(file_json, keys):
         with open(file_json) as f:
             lit = []
             keys = json.load(f)
             for key in keys:
-                 lit.extend(key)
-
+                lit.extend(key)
             return lit
-

@@ -11,10 +11,11 @@ def get_data():
     cols = sheet.ncols  # 获取总列数
     lit = []
     for row in range(rows): # 遍历行
-        for col in range(cols): #遍历 列
+        for col in range(cols): # 遍历 列
             col_data = sheet.cell_value(row, col) # 获取单元格的值
             lit.append(col_data)
     return lit
+
 
 @pytest.mark.parametrize('name', get_data())
 def test01(name):

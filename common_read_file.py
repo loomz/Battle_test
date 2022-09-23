@@ -26,10 +26,10 @@ class CommonReadFile(object):
                 my_data.extend(row)
             return my_data
 
-    def get_data_json(file_json):
+    def get_data_json(file_json,key_name):
         with open(file_json) as f:
             lit = []
             data = json.load(f)
             # extend 追加
-            lit.extend(data['key'])
+            lit.extend(data[key_name])
             return lit

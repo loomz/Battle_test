@@ -3,15 +3,15 @@ import pytest
 
 conn = MySQLdb.connect(
     usr='root',
-    passwd='123456',
-    host='localhost',
-    port=3306,
-    db='test_db'
+    passwd='root',
+    host='192.168.3.189',
+    port=3354,
+    db='testing_db'
 )
 
 
 def get_data():
-    query_sql = 'select id ,usrname,pwd from user_btl'
+    query_sql = 'select id,usrname,pwd from user_btl'
     lst = []
     try:
         # 获取游标

@@ -1,6 +1,6 @@
 
 #引入Common、ParamFactory类
-from common import Common
+from common_requests import Common
 from ParamFactory import Param
 import os
 # uri_login存储战场的选择武器

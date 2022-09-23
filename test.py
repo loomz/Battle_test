@@ -1,5 +1,5 @@
 # Python代码中引入requests库，引入后才可以在你的代码中使用对应的类以及成员函数
-from common import Common
+from common_requests import Common
 
 # 建立uri_index的变量，存储战场的首页路由
 uri_index = '/index'

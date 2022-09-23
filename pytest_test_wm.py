@@ -1,6 +1,6 @@
 import json
 import pytest
-from common import Common
+from common_requests import Common
 import os
 
 

@@ -16,9 +16,9 @@ class CommonReadFile(object):
                 lit.append(col_data)
         return lit
 
-    def get_data_cvs(file_cvs):
+    def get_data_cvs(file_csv):
         #with opn 打开某文件 定义别名 f
-        with open(file_cvs) as f:
+        with open(file_csv) as f:
             #读取里面值
             lst =csv.reader(f)
             my_data = []
@@ -26,10 +26,12 @@ class CommonReadFile(object):
                 my_data.extend(row)
             return my_data
 
-    def get_data_json(file_json,key_name):
+    def get_data_json(file_json,keys):
         with open(file_json) as f:
             lit = []
-            data = json.load(f)
-            # extend 追加
-            lit.extend(data[key_name])
+            keys = json.load(f)
+            for key in keys:
+                 lit.extend(key)
+
             return lit
+

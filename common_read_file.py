@@ -1,6 +1,7 @@
 import xlrd
 import json
 import csv
+import yaml
 
 
 class CommonReadFile(object):
@@ -16,7 +17,7 @@ class CommonReadFile(object):
             row_arr = []
             for col in range(cols):  # 遍历列
                 col_data = sheet.cell_value(row, col)  # 获取单元格的值
-                col_type = sheet.cell_type(row, col) # 数据类型
+                col_type = sheet.cell_type(row, col)  # 数据类型
                 print("col_value=%s, col_type=%s" % (col_data, col_type))
                 row_arr.append(col_data)
             lit.append(row_arr)
@@ -34,18 +35,18 @@ class CommonReadFile(object):
                 my_data.append(row)
             return my_data
 
-    def get_data_json(self, file_json, keys):
+    def get_data_json(self, file_json):
         with open(file_json, encoding="utf-8") as f:
             lit = []
             keys = json.load(f)
             for key in keys:
-                lit.append(key)
+                lit.append(tuple(key.values()))
             return lit
 
-    def get_data_json_arr(self, file_json):
-        with open(file_json) as f:
-            lit = []
-            data = json.load(f)
-            for row in data:
-                lit.append(row)
-            return lit
+    def get_data_yaml(self, file_name):
+        data = []
+        with open(file_name, encoding="utf-8") as f:
+            dict_data = yaml.safe_load(f.read())
+            for i in dict_data:
+                data.append(tuple(dict_data[i].values()))
+        return data

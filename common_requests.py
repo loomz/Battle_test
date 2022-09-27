@@ -47,3 +47,12 @@ class CommonHttp(object):
       # 返回request的Response结果，类型为requests的Response类型
       res = requests.post(url)
     return res
+
+   # url_params = {"access_token": access_token}
+  def post_data(self, uri, url_params, data):
+    url = self.url_root + uri
+    data = json.dumps(data, ensure_ascii=False)
+    response = requests.post(url,
+                             params=url_params,
+                             headers={'Content-Type': 'application/json; charset=UTF-8'},
+                             data=data.encode('utf-8'))

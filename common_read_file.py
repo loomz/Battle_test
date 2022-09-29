@@ -40,7 +40,7 @@ class CommonReadFile(object):
             lit = []
             keys = json.load(f)
             for key in keys:
-                lit.append(tuple(key.values()))
+                lit.append((tuple(key.values())))
             return lit
 
     def get_data_yaml(self, file_name):
@@ -50,3 +50,16 @@ class CommonReadFile(object):
             for i in dict_data:
                 data.append(tuple(dict_data[i].values()))
         return data
+
+    def get_data_csv2(self, file_csv):
+        # with opn 打开某文件 定义别名 f
+        with open(file_csv, encoding="utf-8") as f:
+            # 读取里面值
+            lst = csv.reader(f)
+            my_data = []
+            for row in lst:
+                if len(row) == 1:
+                    my_data.extend(row)
+                else:
+                    my_data.append(row)
+            return my_data

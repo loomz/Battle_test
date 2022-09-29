@@ -37,9 +37,9 @@ def test_login(username, password):
     assert response_json['code'] == 0
 
 
-@pytest.mark.parametrize('param_name', CommonReadFile().get_data_csv('test_selectEq.csv'))
+@pytest.mark.parametrize('param_name', CommonReadFile().get_data_csv2('test_selectEq.csv'))
 def test_selectEq(param_name):
-    url_selectEq = '/selectEq/%s' % param_name[0]
+    url_selectEq = '/selectEq/%s' % param_name
     print('url_selectEq=%s' % url_selectEq)
     response = comm.get(url_selectEq)
     print('http状态码=%s, response.json=%s ' % (response.status_code, response.json()))
@@ -55,7 +55,6 @@ def test_kill(enemyId, equipmentId):
     # 通过返回值的code判断是否成功，0为成功，非0则抛出异常
     response_Json = json.loads(response_kill.text)
     assert response_Json['code'] == 0
-
 
 def teardown():
     print('程序结束')

@@ -37,7 +37,7 @@ def test_login(username, password):
     assert response_json['code'] == 0
 
 
-@pytest.mark.parametrize('param_name', CommonReadFile().get_data_csv2('test_selectEq.csv'))
+@pytest.mark.parametrize('param_name', CommonReadFile().get_data_csv('test_selectEq.csv'))
 def test_selectEq(param_name):
     url_selectEq = '/selectEq/%s' % param_name
     print('url_selectEq=%s' % url_selectEq)

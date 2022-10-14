@@ -18,11 +18,8 @@ def test_index():
     url_index = '/index'
     # 调用你自己在Common封装的get方法 ，返回结果存到了response_index中
     response_index = comm.get(url_index)
-    print('Responseu首页地址内容：' + response_index.text)
-    # 存储返回的response_index对象的text属性存储了访问主页的response信息，通过下面打印出来
-    response_json = json.loads(response_index.text)
-    assert response_json['code'] == 0
-
+    print('http状态码=%s, response.json=%s ' % (response_index.status_code, response_index.json()))
+    assert response_index.status_code == 200 and response_index.json()['code'] == 0
 
 @pytest.mark.parametrize('username,password', CommonReadFile().get_data_csv('test_login.csv'))
 def test_login(username, password):
@@ -31,10 +28,8 @@ def test_login(username, password):
     # 拼凑body的参数
     payload = {'username': username, 'password': password}
     response_login =comm.post_json(uri_login, params=payload)
-    print('Response_login登录内容：' + response_login.text)
     print('http状态码=%s, response.json=%s ' % (response_login.status_code, response_login.json()))
-    response_json = json.loads(response_login.text)
-    assert response_json['code'] == 0
+    assert response_login.status_code == 200 and response_login.json()['code'] == 0
 
 
 @pytest.mark.parametrize('param_name', CommonReadFile().get_data_csv('test_selectEq.csv'))
@@ -51,10 +46,8 @@ def test_kill(enemyId, equipmentId):
     url_kill = '/kill'
     payload = {"enemyid": enemyId, "equipmentid": equipmentId}
     response_kill = comm.post_json(url_kill, params=payload)
-    print('Response内容：' + response_kill.text)
-    # 通过返回值的code判断是否成功，0为成功，非0则抛出异常
-    response_Json = json.loads(response_kill.text)
-    assert response_Json['code'] == 0
+    print('http状态码=%s, response.json=%s ' % (response_kill.status_code, response_kill.json()))
+    assert response_kill.status_code == 200 and response_kill.json()['code'] == 0
 
 def teardown():
     print('程序结束')
